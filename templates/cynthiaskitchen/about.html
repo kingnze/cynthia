@@ -1,0 +1,215 @@
+{% extends "base.html" %}
+{% load static %}
+{% load humanize %}
+{% block title %}
+About Us
+{% endblock title %}
+{% block content %}
+
+<div class="inner-banner py-2">
+  <section class="w3l-breadcrumb text-left py-sm-5 ">
+      <div class="container">
+          <div class="w3breadcrumb-gids">
+            <div class="w3breadcrumb-left text-left">
+              <h2 class="inner-w3-title mt-lg-5 text-center">
+                About Us </h2>
+            </div>
+              <div class="w3breadcrumb-right">
+                  <ul class="breadcrumbs-custom-path mt-5">
+                      <li><a href="{% url 'index' %}">Home</a></li>
+                      <li class="active"><span class="fa fa-hand-o-left hand-icon mx-2"></span>About Us</li>
+                  </ul>
+              </div>
+          </div>
+
+      </div>
+  </section>
+</div>
+   <section id="privacy" class="w3l-specification-6">
+      <div class="specification-6-mian py-5">
+         <div class="container py-lg-5">
+            <div class="row story-6-grids text-left">
+              {% if whatweoffer %}
+              {% for item in whatweoffer %}
+                <div class="col-lg-5 story-gd">
+                    <img src="{{item.aboutimg.url}}" class="img-fluid" alt="/">
+                  </div>
+                <div class="col-lg-7 story-gd pl-lg-4">
+                  <h3 style="color: var(--heading-color);" class="hny-title">{{item.title}}</h3>
+                  <p style="color: var(--heading-color)!important;">{{item.body | truncatechars:150 | safe }}</p>
+        
+                  <div style="color: var(--heading-color);" class="row story-info-content mt-md-5 mt-4">
+  
+                    <div style="color: var(--heading-color);" class="col-md-6 story-info">
+                      <h5 style="color: white!important;" class="py-2"> <a href="#">{{item.subtitle1}}</a></h5>	
+                    <p style="color: var(--heading-color);">{{item.subbody1}}</p>
+                          
+                      
+                    </div>
+                    <div class="col-md-6 story-info">
+                        <h5 style="color: white!important;" class="py-2"> <a href="#">{{item.subtitle2}}</a></h5>	
+                        <p style="color: var(--heading-color);" >{{item.subbody2}}.</p>
+                    </div>
+                    <div class="col-md-6 story-info">
+                        <h5 style="color: white!important;" class="py-2"> <a href="#">{{item.subtitle3}}</a></h5>	
+                        <p style="color: var(--heading-color);">{{item.subbody3}}.</p>
+                    </div>
+                    <div class="col-md-6 story-info">
+                        <h5 style="color: white!important;" class="py-2"> <a href="#">{{item.subtitle4}}</a></h5>	
+                        <p style="color: var(--heading-color);">{{item.subbody4}}.</p>
+                    </div>
+                  </div>
+                
+                </div>
+              
+        
+        
+              </div>
+              {% endfor %}
+            {% endif %}
+           </div>
+         </div>
+  </section>
+  <section class="w3l-services-6">
+    <div class="services-grids-6 py-5">
+      <div class="container py-lg-5">
+          <div class="row w3-icon-grid-gap1">
+            {% if howtooder %}
+          {% for item in howtooder %}
+            <h1 style="color: white!important;" class="text-center mb-5">{{item.title}}</h1>
+            <div class="col-md-6 w3-icon-grid1">
+              <a >
+                <span class="fa fa-shopping-basket" aria-hidden="true"></span>
+                <h3>{{item.subtitle1}}</h3>
+                <div class="clearfix"></div>
+              </a>
+              <p>{{item.subbody1}}</p>
+            </div>
+            <div class="col-md-6 w3-icon-grid1">
+              <a >
+                <span class="fa fa-hourglass" aria-hidden="true"></span>
+                <h3>{{item.subtitle2}}</h3>
+                <div class="clearfix"></div>
+              </a>
+              <p>{{item.subbody2}}</p>
+            </div>
+            <div class="col-md-6 w3-icon-grid1">
+              <a >
+                <span class="fa fa-credit-card" aria-hidden="true"></span>
+                <h3>{{item.subtitle3}}</h3>
+                <div class="clearfix"></div>
+              </a>
+              <p>{{item.subbody3}}</p>
+            </div>
+            <div class="col-md-6 w3-icon-grid1">
+              <a >
+                <span class="fa fa-shopping-basket" aria-hidden="true"></span>
+                <h3>{{item.subtitle4}}</h3>
+                <div class="clearfix"></div>
+              </a>
+              <p>{{item.subbody4}}</p>
+            </div>
+            <div class="col-md-6 w3-icon-grid1">
+              <a >
+                <span class="fa fa-truck" aria-hidden="true"></span>
+                <h3>{{item.subtitle5}}</h3>
+                <div class="clearfix"></div>
+              </a>
+              <p>{{item.subbody5}}</p>
+            </div>
+            <div class="col-md-6 w3-icon-grid1">
+              <a >
+                <span class="fa fa-truck" aria-hidden="true"></span>
+                <h3>{{item.subtitle6}}</h3>
+                <div class="clearfix"></div>
+              </a>
+              <p>{{item.subbody6}}</p>
+            </div>
+            
+            {% endfor %}
+            {% endif %}
+          </div>
+      </div>
+    </div>
+  </section>
+  <section class="features-4">
+    <div class="features4-block py-5">
+      <div class="container py-lg-5">
+        {% if wearethebest %}
+        {% for item in wearethebest %}
+        <h6 class="mb-4">{{item.subtitle}}</h6>
+        <h3 style="color: var(--heading-color);" class="hny-title text-center">{{item.title}}</h3>       
+        <div class="features4-grids text-center row mt-5">
+          <div class="col-lg-3 col-md-6 features4-grid">
+            <div class="features4-grid-inn">
+              <span class="fa fa-bullhorn icon-fea4" aria-hidden="true"></span>
+              <h5 style="color: white!important;"><a href="#URL">{{item.subtitle1}}</a></h5>
+              <p style="color: var(--heading-color);">{{item.subbody1}}</p>
+  
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 features4-grid sec-features4-grid">
+              <div class="features4-grid-inn">
+                <span class="fa fa-truck icon-fea4" aria-hidden="true"></span>
+                <h5 style="color: white!important;"><a href="#URL">{{item.subtitle2}}</a></h5>
+                <p style="color: var(--heading-color);">{{item.subbody2}}</p>
+    
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 features4-grid">
+                <div class="features4-grid-inn">
+                  <span class="fa fa-recycle icon-fea4" aria-hidden="true"></span>
+                  <h5 style="color: white!important;"><a href="#URL">{{item.subtitle3}}</a></h5>
+                  <p style="color: var(--heading-color);">{{item.subbody3}}</p>
+      
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 features4-grid">
+                  <div class="features4-grid-inn">
+                    <span class="fa fa-money icon-fea4" aria-hidden="true"></span>
+                    <h5 style="color: white!important;"><a href="#URL">{{item.subtitle4}}</a></h5>
+                    <p style="color: var(--heading-color);" >{{item.subbody4}}</p>
+        
+                  </div>
+                </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+  </section>
+  <section class="w3l-team py-5" id="team">
+    <div class="container py-md-5 py-4">
+        <div class="position-relative">
+            <h3 class="title-style text-center mb-sm-5 mb-4">Meet our Team</h3>
+        </div>
+        <div class="row text-center">
+          {% if ourteam %}
+            {% for item in ourteam %}
+              <div style="border-radius: none!important;" class="col-md-4 col-6">
+                <div class="team-grids text-center">
+                    <img src="{{item.moreimg.url}}" class="img-fluid" alt="">
+                    <div class="team-info">
+                        <div class="caption">
+                            <div class="social-icons-section text-center">
+                                <a class="fac" href="#url">
+                                    <i class="fa fa-facebook-f"></i>
+                                </a>
+                                <a class="twitter" href="#url">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h4>{{item.name}}</h4>
+                <h6>item.position</h6>
+            </div>
+            {% endfor %}
+          {% endif %}
+            
+
+        </div>
+    </div>
+</section>
+{% endblock content %}

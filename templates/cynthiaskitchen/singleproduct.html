@@ -1,0 +1,216 @@
+{% extends "base.html" %}
+{% load static %}
+{% load humanize %}
+{% block title %}
+{{ product.title }}
+{% endblock title %}
+{% block content %}
+
+<div class="inner-banner py-2">
+  <section class="w3l-breadcrumb text-left py-sm-5 ">
+      <div class="container">
+          <div class="w3breadcrumb-gids">
+            <div class="w3breadcrumb-left text-left">
+                <h2 class="inner-w3-title mt-lg-5 text-center">
+                    Enjoy </h2>
+            </div>
+              <div class="w3breadcrumb-right">
+                  <ul class="breadcrumbs-custom-path">
+                      <li><a href="{% url 'products' %}">Our Menu</a></li>
+                      <li class="active"><span class="fa fa-hand-o-left hand-icon mx-2"></span> {{ product.title }}</li>
+                  </ul>
+              </div>
+          </div>
+
+      </div>
+  </section>
+</div>
+<section  class="w3l-text-11 py-0">
+  <div style="padding-left: 9px; padding-right: 8px;" class="container">
+      <div class="row">
+          <div class="col-lg-9 text11-content">
+              <section id="listing" class="py-4">
+                  <div style="padding-left: 9px; padding-right: 8px;" class="container">                            
+                      <div class="row">
+                          {% if product %}
+                          <div class="col-md-6">
+                              <h4 class="text-center py-3" style="color: var(--heading-color);">{{ product.title }}</h4>
+                          
+                              <a href="{{product.image.url}}" data-lightbox="room-images">
+                                  <img  src="{{product.image.url}}" alt="" class="img-fluid">
+                              </a>
+                              <div  class="row md-5 thumbs">
+                                 
+                                  <div class="col-md-4 col-4 py-3">
+                                      {% if product.image_1 %}
+                                      <a href="{{product.image_1.url}}" data-lightbox="room-images">
+                                          <img style="height: 7rem!important; width: 12rem!important;" src="{{product.image_1.url}}" alt="" class="img-fluid">
+                                      </a>
+                                      {% endif %}
+                                  </div>
+                                  
+                                  <div class="col-md-4 col-4 py-3">
+                                      {% if product.image_2 %}
+                                      <a href="{{product.image_2.url}}" data-lightbox="room-images">
+                                          <img style="height: 7rem!important; width: 12rem!important;" src="{{product.image_2.url}}" alt="" class="img-fluid">
+                                      </a>
+                                      {% endif %}
+                                  </div>
+                              
+                                  <div class="col-md-4 col-4 py-3">
+                                      {% if product.image_3 %}
+                                      <a href="{{product.image_3.url}}" data-lightbox="room-images">
+                                          <img style="height: 7rem!important; width: 12rem!important;" src="{{product.image_3.url}}" alt="" class="img-fluid">
+                                      </a>
+                                      {% endif %}
+                                  </div>
+                                
+                              </div>
+                          </div>    
+                          <div class="col-md-6 mt-5">
+                              <div class="row  fields">
+                                  <div class="col-md-10">
+                                      <ul   class="list-group list-group-flush">
+                                          <li  class="list-group-item ">Price 
+                                              <span class="float-right">₦{{product.price | intcomma}}</span>
+                                              {% else %}
+                                          <h3>&#8358;  {{product.price | intcomma}}</h3>
+                                          {% endif %}
+                                          </li>
+                                          <li  class="list-group-item ">Discount
+                                            {% if product.discount_price %}
+                                              <span class="float-right">₦{{product.discount_price | intcomma}}</span>
+                                          </li>
+                                          <li class="list-group-item ">Delivery Charge
+                                              <span class="float-right">₦{{ product.delivery_charge }}</span>
+                                          </li> 
+                                          
+                                          <li class="list-group-item ">
+                                            <span>Views <i class="fa fa-eye"></i> : {{product.view_count}}</span>
+                                          </li>
+                                          <li class="list-group-item ">
+                                            <a style="color: white!important;" href="{% url 'addtocart' product.id  %}" id="chij">Add To Cart </a>
+                                          </li>
+                                      </ul>
+                                      
+                                  </div>
+                              </div>
+                              
+                              <div style="padding-left: 8px; padding-right: 2px;" class="row">                   
+                                      <div class="col-md-11">
+                                          <br>
+                                              <h4 class="text-center">Description</h4>
+                                              <p style="padding-right: 4px; padding-left: 6px;  color: var(--heading-color); ">{{ product.description }}</p>
+                                      </div>
+                              </div>
+                          </div>                                
+                          {% endif %}                                                      
+                      </div>
+                  </div>
+              </section>  
+              <section>
+                  <div class="join-w3l1 py-sm-5 py-4">
+                      <div class="container py-xl-4 py-lg-2">
+                          <div class="row">
+                            {% if more %}
+                            {% for item in more %}
+                              <div  class="col-lg-6">
+                                  <div  class="join-agile text-left p-4">
+                                      <div  class="row">
+                                          <div class="col-sm-7 offer-name">
+                                              <h6 style="color: var(--heading-color)!important;">{{item.subtitle}}</h6>
+                                              <h4 class="mt-2 mb-3">{{item.title}}</h4>
+                                              <p class="mb-3" style="color: var(--heading-color)!important;">{{item.subbody}}</p>
+                                          </div>
+                                          <div class="col-sm-5 offerimg-w3l">
+                                              <img src="{{item.moreimg.url}}" alt="" class="img-fluid">
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <br>
+                              </div>
+                              {% endfor %}                            
+                              {% endif %}
+                          </div>
+                      </div>
+                  </div>
+                  <div id="foot" class="footer-top-first">
+                      <div class="container py-md-5 py-sm-4 py-3">
+                          {% if moredetail %}
+                          {% for item in moredetail %}
+                          <h2 class="footer-top-head-w3l font-weight-bold mb-2">{{item.title}}</h2>
+                          <p class="footer-main mb-4">{{item.body | safe}}</p>
+                          <br>
+                          <div class="row w3l-grids-footer border-top border-bottom py-sm-4 py-3">
+                              <div class="col-md-4 offer-footer">
+                                  <div class="row">
+                                      <div class="col-4 icon-fot">
+                                          <i style="color: #07ad1a;" class="fa fa-truck icon-fea4"></i>
+                                      </div>
+                                      <div class="col-8 text-form-footer">
+                                          <h3 style="color: var(--heading-color);">{{item.subtitle1}}</h3>
+                                          <p style="color: var(--heading-color);">{{item.subbody1}}</p>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-md-4 offer-footer my-md-0 my-4">
+                                  <div class="row">
+                                      <div class="col-4 icon-fot">
+                                          <i style="color: #07ad1a;" class="fa fa-truck icon-fea4"></i>
+                                      </div>
+                                      <div  class="col-8 text-form-footer">
+                                          <h3 style="color: var(--heading-color);">{{item.subtitle2}}</h3>
+                                          <p style="color: var(--heading-color);">{{item.subbody2}}</p>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-md-4 offer-footer">
+                                  <div class="row">
+                                      <div class="col-4 icon-fot">
+                                          <i style="color: #07ad1a;" class="fa fa-thumbs-up"></i>
+                                      </div>
+                                      <div class="col-8 text-form-footer">
+                                          <h3 style="color: var(--heading-color);">{{item.subtitle3}}</h3>
+                                          <p style="color: var(--heading-color);">{{item.subbody3}}</p>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>                                                      
+                          {% endfor %}                            
+                          {% endif %}          
+                        </div>
+                  </div> 
+                </section>                    
+          </div>  
+          <div class="sidebar-side col-lg-3 mt-5 ">
+            <aside class="sidebar">
+                <div class="sidebar-widget">
+                <div class="sidebar-widget popular-posts">
+                    <div class="sidebar-title">
+                        <h4>Recent Products</h4>
+                    </div>
+                    {% if products %}
+                        {% for item in products %}
+                    <article class="post">
+                        
+                        <img src="{{item.image.url}}" alt="">
+                        <div class="text">
+                            <a href="{% url 'singlepage' item.slug %}">{{ item.title }}</a>
+                            <div class="post-info">{{item.state}}</div>
+                        </div>
+                        
+                    </article> 
+                     {% endfor %}				  
+                        {% endif %}
+                </div>
+            </aside>
+        </div>          
+      </div>
+  </div>
+</section>
+
+
+
+
+
+{% endblock content %}

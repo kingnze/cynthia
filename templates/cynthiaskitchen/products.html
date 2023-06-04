@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+{% load static %}
+{% load humanize %}
+{% block title %}
+Our Menu
+{% endblock title %}
+{% block content %}
+
+<div class="inner-banner py-2">
+  <section class="w3l-breadcrumb text-left py-sm-5 ">
+      <div class="container">
+          <div class="w3breadcrumb-gids">
+            <div class="w3breadcrumb-left text-left">
+                <h2 class="inner-w3-title mt-lg-5 text-center">
+                  Our Menu </h2>
+              </div>
+              <div class="w3breadcrumb-right ">
+                  <ul class="breadcrumbs-custom-path">
+                      <li><a href="{% url 'index' %}">Home</a></li>
+                      <li class="active"><span class="fa fa-hand-o-left hand-icon mx-2"></span>Products</li>
+                  </ul>
+              </div>
+          </div>
+
+      </div>
+  </section>
+</div>
+<section class="w3l-text-11 py-0">
+    <div class="container py-md-5 py-4">
+        <div class="row">
+            <div class="sidebar-side col-lg-3 pl-lg-5 mt-lg-0 ">
+                <aside class="sidebar">
+                    <div class="sidebar-widget">
+                    <div class="sidebar-widget popular-posts">
+                        <div class="sidebar-title">
+                            <h4>News Blog</h4>
+                        </div>
+                        {% if blog %}
+                            {% for item in blog %}
+                        <article class="post">
+                            
+                            <img src="{{item.leadimg.url}}" alt="">
+                            <div class="text">
+                                <a href="{% url 'blogdetail' item.slug %}">{{ item.title | truncatechars:40 | safe  }}</a>
+                                <div style="font-size: 11px;" class="post-info"><i class="fa fa-clock"></i> {{item.date_posted | timesince}} ago</div>
+                            </div>
+                            
+                        </article> 
+                         {% endfor %}				  
+                            {% endif %}
+                    </div>
+                </aside>
+            </div>
+            <div class="col-lg-9 text11-content">
+                <section  class="w3l-ecommerce-main ">
+                    <div class="ecom-contenthny py-0">
+                        <div style="padding-right: 5px; padding-left: 5px; "  class="container py-lg-2">
+                            <div class="row">
+                                <div  id="kevin">
+                                    <div class="col-lg-6">
+                                        <h5 style="color: white!important;" class="hny-title  mb-0">Our Menu </h5>
+                                    </div>
+                                    <div class="col-lg 6">
+                                        <!-- <a  href="">
+                                            <h5 class="hny-title text-right mb-0">See All</h5>
+                                        </a> -->
+                                        </div>
+                                    
+                                    </div>
+                                </div>
+                                <div style="margin-top: -15px!important;"  class="ecom-products-grids row mt-lg-0 mt-3">
+                                    {% if product %}
+                                    {% for item in product %}
+                                    <div class="col-lg-3 col-6 product-incfhny mt-4">
+                                        <div class="product-grid2 transmitv">
+                                            <div class="product-image2">
+                                                    <div class="rentext-listing-category"><span class="pro-left">{{item.pasentage}}</span></div>
+                                                    <img style="height: 13rem!important;" class="pic-1 img-fluid" src="{{item.image.url}}">
+                                                    <img class="pic-2 img-fluid" src="{{item.image_1.url}}">
+                                                <ul class="social">                                   
+                                                    <li><a  style="color: white!important;" href="{% url 'singlepage' item.slug %}" data-tip="Quick View"><span class="fa fa-eye"></span></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="product-content">
+                                                <h3 class="title"><a href="{% url 'singlepage' item.slug %}">{{ item.title}}</a></h3>
+                                                <span class="price"><del>₦{{ item.discount_price}}</del>₦{{ item.price}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                    {% endif %}           
+                                    </div>
+                                <div class="row">
+                                    <div class="col-md-12 mt-5 mb-5 ">
+                                      {% if product.has_other_pages %}
+                                        <ul class="pagination text-center">
+                                          {% if product.has_previous %}
+                                              <li class="page-item">
+                                                <a href="?page={{product.previous_page_number}}" class="page-link">&laquo;
+                                                </a>
+                                              </li>
+                                              {% else %}
+                                              <!-- <li class="page-link disabled">
+                                                <a class="page-link">&laquo;</a>
+                                              </li> -->
+                                          {% endif %}
+                                          {% for i in product.paginator.page_range %}
+                                            {% if product.number == i %}
+                                              <li class="page-item active">
+                                                <a class="page-link">{{i}}</a>
+                                              </li>
+                                           {% else %}
+                                           <li class="page-item">
+                                             <a href="?page={{i}}" class="page-link">{{i}}</a>
+                                           </li>
+                                         {% endif %}
+                                        {% endfor %} 
+                                        {% if product.has_next %}
+                                            <li class="page-item">
+                                              <a href="?page={{product.next_page_number}}" class="page-link">&raquo;
+                                              </a>
+                                            </li>
+                                          {% else %}
+                                            <!-- <li class="page-link disabled">
+                                              <a class="page-link">&raquo;</a>
+                                            </li> -->
+                                        {% endif %}
+                                      </ul>                   
+                                        {% endif %}
+                                    </div>
+                                </div> 
+                        </div>
+                    </div>
+                </section>                  
+            </div>                
+        </div>
+    </div>
+</section>
+{% endblock content %}

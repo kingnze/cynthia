@@ -1,0 +1,302 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+Home
+{% endblock title %}
+{% block content %}
+<section  class="w3l-banner-slider-main">	
+    <div class="bannerhny-content">
+      <div  class="content-baner-inf">
+        <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+          </ol>
+          {% if banner %}
+          {% for item in banner %}
+             <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="container">
+                <!-- <div class="carousel-caption">
+                  <h3 style="color: white; font-weight: 500; text-transform: lowercase!important;">{{ item.title1}}</h3>
+                  <a href="{% url 'products' %}" class="shop-button btn">
+                    Order Now
+                  </a>
+    
+                </div> -->
+              </div>
+            </div>
+            <div class="carousel-item item2">
+              <div class="container">
+                <div class="carousel-caption">
+                  <h3 style="color: white; font-weight: 500;">{{ item.title2}}</h3>
+                  <a href="{% url 'products' %}" class="shop-button btn">
+                    Order Now
+                  </a>
+    
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item item3">
+              <div class="container">
+                <div class="carousel-caption">
+                  <h3 style="color: white; font-weight: 500;">{{ item.title3}}</h3>
+                  <a href="{% url 'products' %}" class="shop-button btn">
+                    Order Now
+                  </a>
+    
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item item4">
+              <div class="container">
+                <div class="carousel-caption">
+                  <h3 style="color: white; font-weight: 500;">{{ item.title4}}</h3>
+                  <a href="{% url 'products' %}" class="shop-button btn">
+                    Order Now
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- <a class="carousel-control-prev" href="" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a> -->
+        </div>
+        </div>
+        <div class="right-banner">
+          <div class="right-1">
+            <h4 style="color: white; font-weight: 600;">{{ item.title5}}</h4>
+          </div>
+        </div>
+          {% endfor %}            
+          {% endif %}
+         
+    
+    </div>
+    
+</section>
+
+<section  class="w3l-ecommerce-main py-5">
+	<div class="ecom-contenthny py-0">
+		<div  class="container py-lg-2">
+			<div class="row">
+				<div id="kevin">
+					<div class="col-lg-6">
+						<h5 style="color: white!important;"  class="hny-title  mb-0">Our Menu</h5>
+					</div>
+					<div class="col-lg 6">
+						<a  href="{% url 'products' %}">
+							<h5 style="color: white!important;" class="hny-title text-right mb-0">See All</h5>
+						</a>
+						</div>
+					
+					</div>
+				</div>
+            <!-- /row-->
+            <div style="margin-top: -15px!important;"  class="ecom-products-grids row mt-lg-0 mt-3">
+                {% if product %}
+                {% for item in product %}
+                <div class="col-lg-2 col-6 product-incfhny mt-4">
+                    <div class="product-grid2 transmitv">
+                        <div class="product-image2">
+                                <div class="rentext-listing-category"><span class="pro-left">{{item.pasentage}}</span></div>
+                                <img style="height: 12rem!important;" class="pic-1 img-fluid" src="{{item.image.url}}">
+                                <img class="pic-2 img-fluid" src="{{item.image_1.url}}">
+                            <ul class="social">                                   
+                                <li><a  style="color: white!important;" href="{% url 'singlepage' item.slug %}" data-tip="Quick View"><span class="fa fa-eye"></span></a></li>
+                            </ul>
+                        </div>
+                        <div style="border-top: 4px solid #07ad1a!important" class="product-content">
+                            <h3 class="title"><a href="{% url 'singlepage' item.slug %}">{{ item.title}}</a></h3>
+                            <span class="price"><del>₦{{ item.discount_price}}</del>₦{{ item.price}}</span>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                {% endif %}           
+                </div>
+            <!-- //row-->
+				
+				
+				
+		</div>
+	</div>
+</section>
+<section class="w3l-content-w-photo-6">
+
+<div class="content-photo-6-mian py-5">
+        <div class="container py-lg-5">
+            <div class="align-photo-6-inf-cols row">
+                {% if flatdiscount %}
+                  {% for item in flatdiscount %}
+                    <div class="photo-6-inf-right col-lg-6">
+                        <h3 style="color: var(--heading-color)!important;" class="text-left mb-3">{{ item.title}}</h3>
+                        <p style="color: var(--heading-color)!important;">{{ item.body | truncatechars:300 | safe }}</p>
+                        <a href="{% url 'products' %}" class="read-more btn">
+                                Order Now
+                        </a>
+                </div>
+                <div class="photo-6-inf-left col-lg-6">
+                        <img src="{{item.leadimg.url}}" class="img-fluid" alt="">
+                </div>
+                  {% endfor %}
+                {% endif %}
+                
+            </div>
+            </div>
+        </div>
+</section>
+<br>
+<section class="features-4">
+    <div class="features4-block">
+      <div class="container py-lg-5">
+        {% if wearethebest %}
+        {% for item in wearethebest %}
+        <br>
+        <h6 class="mb-4">{{item.subtitle}}</h6>
+        <h3 style="color: var(--heading-color);" class="hny-title text-center">{{item.title}}</h3>       
+        <div class="features4-grids text-center row mt-5">
+          <div class="col-lg-3 col-md-6 features4-grid">
+            <div class="features4-grid-inn">
+              <span class="fa fa-bullhorn icon-fea4" aria-hidden="true"></span>
+              <h5 style="color: white!important;"><a href="#URL">{{item.subtitle1}}</a></h5>
+              <p style="color: var(--heading-color);">{{item.subbody1}}</p>
+  
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 features4-grid sec-features4-grid">
+              <div class="features4-grid-inn">
+                <span class="fa fa-truck icon-fea4" aria-hidden="true"></span>
+                <h5 style="color: white!important;"><a href="#URL">{{item.subtitle2}}</a></h5>
+                <p style="color: var(--heading-color);">{{item.subbody2}}</p>
+    
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 features4-grid">
+                <div class="features4-grid-inn">
+                  <span class="fa fa-recycle icon-fea4" aria-hidden="true"></span>
+                  <h5 style="color: white!important;"><a href="#URL">{{item.subtitle3}}</a></h5>
+                  <p style="color: var(--heading-color);">{{item.subbody3}}</p>
+      
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 features4-grid">
+                  <div class="features4-grid-inn">
+                    <span class="fa fa-money icon-fea4" aria-hidden="true"></span>
+                    <h5 style="color: white!important;"><a href="#URL">{{item.subtitle4}}</a></h5>
+                    <p style="color: var(--heading-color);" >{{item.subbody4}}</p>
+        
+                  </div>
+                </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+</section>
+
+<section class="w3l-video-6">
+<!-- /video-6-->
+<div class="video-66-info">
+    <div class="container-fluid">
+        <div class="video-grids-info row">
+            <div class="video-gd-right col-lg-7">
+                <div class="video-inner text-center">
+                            <!--popup-->
+                                <a class="play-button btn popup-with-zoom-anim" href="#small-dialog">
+                                        <span class="fa fa-play" aria-hidden="true"></span>
+                                </a>
+                                <div id="small-dialog" class="mfp-hide">
+                                    <div class="search-top notify-popup">
+                                      <iframe width="560" height="315" src="https://www.youtube.com/embed/XQw_3vb0vKg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                                <!--//popup-->
+                        </div>
+                </div> 
+            <div class="video-gd-left col-lg-5 p-lg-5 p-4">
+                {% if flatdiscount %}
+                  {% for item in flatdiscount %}
+                <div class="p-xl-4 p-0 video-wrap">
+                    <h3 style="color: var(--heading-color)!important; text-transform: none!important;" class="hny-title text-left">{{item.title}}</h3>
+                    <p style="color: var(--heading-color)!important;">{{ item.body | truncatechars:300 | safe }}</p>
+                    <a href="{% url 'products' %}" class="read-more btn">
+                        Order Now
+                    </a>
+                </div>
+                {% endfor %}
+                {% endif %}
+            </div>
+
+        </div>
+    </div>
+</div>
+</section>
+<br><br><br>
+<section class="w3l-content-5">
+<!-- /content-6-section -->
+<div class="content-5-main">
+    <div class="container">
+        <div class="content-info-in row">
+            {% if option %}
+              {% for item in option %}
+               <div class="content-gd col-md-6 offset-lg-3 text-center">
+                <h3 class="hny-title two">{{item.title}}</h3>
+                <p>{{item.body | truncatechars:250 | safe }}</p>
+                <a href="#" class="read-more">
+                    
+                </a>
+
+            </div> 
+              {% endfor %}
+            {% endif %}
+            
+
+        </div>
+
+    </div>
+</div>
+</section>
+<br>
+<section id="privacy" class="blog">
+    <div class="kinging-news" id="news">
+        <section id="grids5-block" >
+            <div  style="padding-left: 10px; padding-right: 10px;" class="container py-lg-5 py-md-2 ">
+                <a href="{% url 'blog' %}"><h3 class="title-big text-center">News Blog</h3></a>
+                <div class="row mt-lg-5  mt-3">
+                    {% if blog %}
+                    {% for item in blog %}
+                    <div class=" col-md-6 mt-0 mb-5 mt-sm-4">
+                        <div style="border-radius: 0px!important;"  class="grids5-info">
+                            <a style="border-radius: 0px!important;" href="{% url 'blogdetail' item.slug %}" class="d-block zoom"><img style="  border-radius: 0px!important;" src="{{item.leadimg.url}}" alt=""
+                                    class="img-fluid news-image" /></a>
+                            <div style="border-top: 4px solid #07ad1a!important;" class="blog-info">
+                                <div>
+                                    <span style="font-size: 13px;"  class="small mt-2 mb-3" ><i class="fa fa-user-o"></i> by {{item.author }}</span>
+                                <span style="font-size: 13px;"  class="small mt-2 mb-3" ><i class="fa fa-clock"></i> {{item.date_posted | timesince}} ago</span>
+                                </div>
+                                <a href="{% url 'blogdetail' item.slug %}" class="category">Uncategorized</a>
+                               
+                                <h4><a style="font-size: large;" href="{% url 'blogdetail' item.slug %}">{{ item.title | truncatechars:85 | safe  }}</a></h4>
+                                <!-- <p>{{ item.body | truncatechars:130 | safe }}</p> -->
+                                
+                            </div>                      
+                        </div>                  
+                    </div>     
+                            
+                    {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+        </div>
+</section>
+{% endblock content %}

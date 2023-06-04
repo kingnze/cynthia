@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+Privacy Policy
+{% endblock title %}
+{% block content %}
+
+<div class="inner-banner py-2">
+  <section class="w3l-breadcrumb text-left py-sm-5 ">
+      <div class="container">
+          <div class="w3breadcrumb-gids">
+			<div class="w3breadcrumb-left text-left">
+				<h2 class="inner-w3-title mt-lg-5 text-center">
+					Privacy Policy </h2>
+			</div>
+              <div class="w3breadcrumb-right">
+                  <ul class="breadcrumbs-custom-path">
+                      <li><a href="{% url 'index' %}">Home</a></li>
+                      <li class="active"><span class="fa fa-hand-o-left hand-icon mx-2"></span>Privacy Policy</li>
+                  </ul>
+              </div>
+          </div>
+
+      </div>
+  </section>
+</div>
+
+	<div id="privacy" class="terms py-sm-5 py-4">
+		<div class="container py-xl-4 py-lg-2">
+			{% if privacy %}
+			{% for item in privacy %}
+			  <h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3"><span>{{ item.title}}</span></h3>
+			  <div class="text-center">
+				{{ item.body | safe}}
+			  </div>
+			{% endfor %}			  
+			{% endif %}
+			
+
+		</div>
+	</div>
+	<section>
+		<div class="join-w3l1 py-sm-5 py-4">
+			<div class="container py-xl-4 py-lg-2">
+				<div class="row">
+				  {% if more %}
+				  {% for item in more %}
+					<div  class="col-lg-6">
+						<div  class="join-agile text-left p-4">
+							<div  class="row">
+								<div class="col-sm-7 offer-name">
+									<h6 style="color: var(--heading-color)!important;">{{item.subtitle}}</h6>
+									<h4 class="mt-2 mb-3">{{item.title}}</h4>
+									<p class="mb-3" style="color: var(--heading-color)!important;">{{item.subbody}}</p>
+								</div>
+								<div class="col-sm-5 offerimg-w3l">
+									<img src="{{item.moreimg.url}}" alt="" class="img-fluid">
+								</div>
+							</div>
+						</div>
+						<br>
+					</div>
+					{% endfor %}                            
+					{% endif %}
+				</div>
+			</div>
+		</div>
+		<div id="foot" class="footer-top-first">
+			<div class="container py-md-5 py-sm-4 py-3">
+				{% if moredetail %}
+				{% for item in moredetail %}
+				<h2 class="footer-top-head-w3l font-weight-bold mb-2">{{item.title}}</h2>
+				<p class="footer-main mb-4">{{item.body | safe}}</p>
+				<div class="row w3l-grids-footer border-top border-bottom py-sm-4 py-3">
+					<div class="col-md-4 offer-footer">
+						<div class="row">
+							<div class="col-4 icon-fot">
+								<i style="color: #07ad1a;" class="fa fa-truck icon-fea4"></i>
+							</div>
+							<div class="col-8 text-form-footer">
+								<h3 style="color: var(--heading-color);">{{item.subtitle1}}</h3>
+								<p style="color: var(--heading-color);">{{item.subbody1}}</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4 offer-footer my-md-0 my-4">
+						<div class="row">
+							<div class="col-4 icon-fot">
+								<i style="color: #07ad1a;" class="fa fa-truck icon-fea4"></i>
+							</div>
+							<div  class="col-8 text-form-footer">
+								<h3 style="color: var(--heading-color);">{{item.subtitle2}}</h3>
+								<p style="color: var(--heading-color);">{{item.subbody2}}</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4 offer-footer">
+						<div class="row">
+							<div class="col-4 icon-fot">
+								<i style="color: #07ad1a;" class="fa fa-thumbs-up"></i>
+							</div>
+							<div class="col-8 text-form-footer">
+								<h3 style="color: var(--heading-color);">{{item.subtitle3}}</h3>
+								<p style="color: var(--heading-color);">{{item.subbody3}}</p>
+							</div>
+						</div>
+					</div>
+				</div>                                                      
+				{% endfor %}                            
+				{% endif %}          
+			  </div>
+		</div> 
+	  </section>  
+{% endblock content %}
+

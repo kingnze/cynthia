@@ -1,0 +1,37 @@
+{% load static %}
+
+<!doctype html>
+<html lang="zxx">
+
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link  href="{% static 'images/kingnzelogo.jpg' %}" rel="shortcut icon" type="img/x-icon"> 
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" text="text/css" href="{% static 'lightbox2-2.11.3/dist/css/lightbox.min.css' %}" />
+        <link href="//fonts.googleapis.com/css?family=Oswald:300,400,500,600&display=swap" rel="stylesheet">
+        <link href="{% static 'fonts.googleapis.com/css?family=Oswald:300,400,500,600&display=swap' %}" rel="stylesheet">
+        <link href="//fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,900&display=swap" rel="stylesheet">
+        <link href="{% static '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,900&display=swap' %}" rel="stylesheet">
+      
+      </head>
+    
+    <title>
+        {% block title %}
+          
+        {% endblock title %}
+    </title>
+  </head>
+  <body>
+    {% include 'nav.html' %}
+
+
+    {% block content %}
+
+    {% endblock content %}
+
+    {% include 'footer.html' %}
+  </body>
+
+</html>

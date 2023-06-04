@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load static %}
+{% load humanize %}
+
+{% block title %}Search Result {% endblock title %}
+
+{% block content %}
+<div class="inner-banner py-3c">
+  <section class="w3l-breadcrumb text-left py-sm-5 ">
+      <div class="container">
+          <div class="w3breadcrumb-gids">
+            <div class="w3breadcrumb-left text-left">
+                <h2 class="inner-w3-title mt-lg-5 text-center">
+                    Search Result </h2>
+            </div>
+              <div class="w3breadcrumb-right">
+                  <ul class="breadcrumbs-custom-path">
+                      <li><a href="{% url 'index' %}">Home</a></li>
+                      <li class="active"><span class="fa fa-hand-o-left hand-icon mx-2"></span>Search Result</li>
+                  </ul>
+              </div>
+          </div>
+
+      </div>
+  </section>
+</div>
+<br>
+<section class="w3l-ecommerce-main  py-2">
+  <div class="ecom-contenthny py-0">
+      <div  class="container py-lg-2">
+          <div style="margin-top: -15px!important;"  class="ecom-products-grids row mt-lg-0 mt-3">
+            {% if product %}
+            {% for item in product %}
+            <div class="col-lg-3 col-12 product-incfhny mt-4">
+                <div class="product-grid2 transmitv">
+                    <div class="product-image2">
+                            <div class="rentext-listing-category"><span class="pro-left">{{item.pasentage}}</span></div>
+                            <img style="height: 13rem!important;" class="pic-1 img-fluid" src="{{item.image.url}}">
+                            <img class="pic-2 img-fluid" src="{{item.image_1.url}}">
+                        <ul class="social">                                   
+                            <li><a  style="color: white!important;" href="{% url 'singlepage' item.slug %}" data-tip="Quick View"><span class="fa fa-eye"></span></a></li>
+                        </ul>
+                    </div>
+                    <div style="border-top: 4px solid #07ad1a!important" class="product-content">
+                        <h3 class="title"><a href="{% url 'singlepage' item.slug %}">{{ item.title}}</a></h3>
+                        <span class="price"><del>₦{{ item.discount_price}}</del>₦{{ item.price}}</span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        {% endif %}	
+              
+          </div>
+      </div>
+  </div>
+</section>  
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+
+
+
+

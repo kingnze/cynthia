@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+News Blog
+{% endblock title %}
+{% block content %}
+
+<div class="inner-banner py-2">
+  <section class="w3l-breadcrumb text-left py-sm-5 ">
+      <div class="container">
+          <div class="w3breadcrumb-gids">
+            <div class="w3breadcrumb-left text-left">
+                <h2 class="inner-w3-title mt-lg-5 text-center">
+                    News </h2>
+              </div>
+              <div class="w3breadcrumb-right ">
+                  <ul class="breadcrumbs-custom-path ">
+                      <li><a href="{% url 'index' %}">Home</a></li>
+                      <li class="active"><span class="fa fa-hand-o-left hand-icon mx-2"></span>News Blog</li>
+                  </ul>
+              </div>
+          </div>
+
+      </div>
+  </section>
+</div>
+<br>
+<section id="privacy" class="blog">
+  <div class="kinging-news" id="news">
+      <section id="grids5-block" >
+          <div  style="padding-left: 10px; padding-right: 10px;" class="container py-lg-5 py-md-2 ">
+              <a href="{% url 'blog' %}"><h3 class="title-big text-center">News Blog</h3></a>
+              <div class="row mt-lg-5  mt-3">
+                  {% if blog %}
+                  {% for item in blog %}
+                  <div class=" col-md-4 mt-0 mb-5 mt-sm-4">
+                      <div style="border-radius: 0px!important;"  class="grids5-info">
+                          <a style="border-radius: 0px!important;" href="{% url 'blogdetail' item.slug %}" class="d-block zoom"><img style="  border-radius: 0px!important;" src="{{item.leadimg.url}}" alt=""
+                                  class="img-fluid news-image" /></a>
+                          <div style="border-top: 4px solid #07ad1a!important;" class="blog-info">
+                              <div>
+                                  <span style="font-size: 13px;"  class="small mt-2 mb-3" ><i class="fa fa-user-o"></i> by {{item.author }}</span>
+                              <span style="font-size: 13px;"  class="small mt-2 mb-3" ><i class="fa fa-clock"></i> {{item.date_posted | timesince}} ago</span>
+                              </div>
+                              <a href="{% url 'blogdetail' item.slug %}" class="category">Uncategorized</a>
+                             
+                              <h4><a style="font-size: large;" href="{% url 'blogdetail' item.slug %}">{{ item.title | truncatechars:85 | safe  }}</a></h4>
+                              <!-- <p>{{ item.body | truncatechars:130 | safe }}</p> -->
+                              
+                          </div>                      
+                      </div>                  
+                  </div>     
+                          
+                  {% endfor %}
+                  {% endif %}
+              </div>
+              <div class="row">
+                <div class="col-md-12 mt-5 mb-5">
+                  {% if blog.has_other_pages %}
+                    <ul class="pagination">
+                      {% if blog.has_previous %}
+                          <li class="page-item">
+                            <a href="?page={{blog.previous_page_number}}" class="page-link">&laquo;
+                            </a>
+                          </li>
+                          {% else %}
+                          <!-- <li class="page-link disabled">
+                            <a class="page-link">&laquo;</a>
+                          </li> -->
+                      {% endif %}
+                      {% for i in blog.paginator.page_range %}
+                        {% if blog.number == i %}
+                          <li class="page-item active">
+                            <a class="page-link">{{i}}</a>
+                          </li>
+                       {% else %}
+                       <li class="page-item">
+                         <a href="?page={{i}}" class="page-link">{{i}}</a>
+                       </li>
+                     {% endif %}
+                    {% endfor %} 
+                    {% if blog.has_next %}
+                        <li class="page-item">
+                          <a href="?page={{blog.next_page_number}}" class="page-link">&raquo;
+                          </a>
+                        </li>
+                      {% else %}
+                        <!-- <li class="page-link disabled">
+                          <a class="page-link">&raquo;</a>
+                        </li> -->
+                    {% endif %}
+                  </ul>                   
+                    {% endif %}
+                </div>
+            </div> 
+          </div>
+      </section>
+      </div>
+</section>
+{% endblock content %}

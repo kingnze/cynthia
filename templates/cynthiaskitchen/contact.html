@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+Contact
+{% endblock title %}
+{% block content %}
+
+<div class="inner-banner py-2">
+  <section class="w3l-breadcrumb text-left py-sm-5 ">
+      <div class="container">
+          <div class="w3breadcrumb-gids">
+              <div class="w3breadcrumb-left text-left">
+                <h2 class="inner-w3-title mt-lg-5 text-center">
+                  Contact Us </h2>
+              </div>
+              <div class="w3breadcrumb-right mb-3">
+                  <ul class="breadcrumbs-custom-path mt-5">
+                      <li><a href="{% url 'index' %}">Home</a></li>
+                      <li class="active"><span class="fa fa-hand-o-left hand-icon mx-2"></span>Contact</li>
+                  </ul>
+              </div>
+          </div>
+
+      </div>
+  </section>
+</div>
+<section class="w3l-contacts-8">
+  <div class="contacts-9 section-gap py-5">
+    <div class="container py-lg-5">
+      <div class="row top-map">
+        <div class="col-lg-6 partners">
+          <div class="cont-details">
+            <h3 style="color: var(--heading-color);" class="hny-title mb-0">Get in <span>touch</span></h5>
+            <p style="color: var(--heading-color);" class="mb-5">We're ready to lead you into the future with Business Services</p>
+            <p class="margin-top"><span class="texthny">Call Us : </span> <a style="color: var(--heading-color);" href="tel:+(234) 701 9866 620">+(234) 701 9866 620</a></p>
+            <p> <span class="texthny">Email : </span> <a style="color: var(--heading-color);" href="mailto:cynthianzekwe20@gmail.com">
+                cynthianzekwe20@gmail.com</a></p>
+            <p style="color: var(--heading-color);" class="margin-top"> 28 Lumbar street new haven Enugu North, Enugu State Nigeria </p>
+          </div>
+          <div class="hours">
+            <h3 style="color: var(--heading-color);" class="hny-title">Working <span>Hours</span></h5>
+            <h6 style="color: var(--heading-color);">Business Service:</h6>
+            <p style="color: var(--heading-color);" > Monday to Friday 8.00 am - 9.00 pm</p>
+            <h6 style="color: var(--heading-color);" class="margin-top">Customer support:</h6>
+            <p style="color: var(--heading-color);"> Monday to Friday 8.00 am - 6.00 pm</p>
+            <p style="color: var(--heading-color);"> Saturday 10.00 am - 4.00 pm</p>
+            <p style="color: var(--heading-color);"> Sunday - Closed</p>
+          </div>
+        </div>
+        <div class="col-lg-6 map">
+          <div class="map-content-9 form-bg-img">
+            <div class="layer section-gap ">
+              <div class="container py-lg-5">
+                  <div class="form">
+                    <br>
+                    <h3 style="color: white!important;" class=" text-center">Get in touch with us</h3>
+                    {% if messages %}
+                    {% for item in messages %}
+                    <p class="alert alert-success"> {{item}} </p>
+                    {% endfor %}
+                    {% endif %}
+                    <form action=""class="mt-md-5 mt-4 " method="POST">
+                      {% csrf_token %}
+                      <div class="input mb-3">
+                        <input type="text" name="fullname" id="kingName" placeholder="Full Name">
+                      </div>
+                      <div class="input mb-3">
+                        <input type="email" name="email" id="kingSubject" placeholder="Email" required="" />                       
+                      </div>
+                      <div class="input ">
+                        <input type="number" name="phone" id="kingSubject" placeholder="Phone" required="">
+                      </div>
+                      <div class="input-textarea">
+                        <textarea name="message" id="w3lMessage" placeholder="Message" required=""></textarea>
+                      </div>
+                      <button type="submit" class="btn">Send</button>
+                    </form>
+                    <br>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="contacts-sub-5 mb-5">
+  <div class="contacts-mapw3 position-relative">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m26!1m12!1m3!1d63421.16128265926!2d3.32852899281702!3d6.544074738252792!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m11!3e6!4m3!3m2!1d6.514278399999999!2d3.3718272!4m5!1s0x103b9231a8afe793%3A0x5f297da31d68daec!2sanchorsoft%20academy!3m2!1d6.5992123!2d3.3465852!5e0!3m2!1sen!2sng!4v1675175003726!5m2!1sen!2sng" style="border:0" allowfullscreen></iframe>
+  </div>
+</div>
+{% endblock content %}
+

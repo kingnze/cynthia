@@ -1,0 +1,22 @@
+from django.contrib import admin
+from . models import *
+
+admin.site.register(Customer)
+admin.site.register(Product)
+admin.site.register(Cart)
+admin.site.register(CartProduct)
+admin.site.register(Order)
+admin.site.register(Blog)
+admin.site.register(Contact)
+admin.site.register(About)
+admin.site.register(Terms)
+admin.site.register(Privacy)
+admin.site.register(Banner)
+admin.site.register(Wearethebest)
+admin.site.register(Howtooder)
+admin.site.register(Whatweoffer)
+admin.site.register(More)
+admin.site.register(Moredetail)
+admin.site.register(Flatdiscount)
+admin.site.register(Option)
+admin.site.register(Ourteam)
